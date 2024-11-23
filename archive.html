@@ -195,7 +195,7 @@
             <td>شراء لحوم من حفر الباطن</td>
             <td>5</td>
             <td>30</td>
-            <td>مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr class="done">
             <td>2024-11-02</td>
@@ -206,7 +206,7 @@
             <td>شراء لحوم من نجران</td>
             <td>6</td>
             <td>10</td>
-            <td>غير مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr class="done">
             <td>2024-11-11</td>
@@ -217,7 +217,7 @@
             <td>شراء لحوم من القصيم</td>
             <td>6</td>
             <td>1</td>
-            <td>غير مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr class="late">
             <td>2024-10-16</td>
@@ -228,7 +228,7 @@
             <td>شراء خضار من الطائف</td>
             <td>3</td>
             <td>26</td>
-            <td>مؤرشف</td>
+           <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr class="late">
             <td>2024-10-20</td>
@@ -239,7 +239,7 @@
             <td>شراء من الشفا</td>
             <td>1</td>
             <td>22</td>
-            <td>غير مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr>
             <td>2024-10-14</td>
@@ -250,7 +250,7 @@
             <td>تقرير حول مداخيل قسم الحفلات</td>
             <td>7</td>
             <td>28</td>
-            <td>مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
         <tr class="suspended">
             <td>2024-10-14</td>
@@ -261,7 +261,7 @@
             <td>تقرير حول مداخيل قسم الحفلات</td>
             <td>7</td>
             <td>28</td>
-            <td>مؤرشف</td>
+            <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button></td>
         </tr>
     </tbody>
 </table>
@@ -280,6 +280,36 @@
                 </li>
             </ul>
         </nav>
+		
+		
+		
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="viewFileModalLabel">عرض الملف</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p><strong>رقم الملف:</strong> 123/2</p>
+					<p><strong>إلى:</strong> <span id="view_to_user">سامي علي</span></p>
+					<p><strong>التصنيف الرئيسي:</strong> <span id="view_main_category">مشتريات</span></p>
+					<p><strong>التصنيف الفرعي:</strong> <span id="view_sub_category">لحوم</span></p>
+					<p><strong>الموضوع:</strong></p>
+					<p>شراء لحوم من نجران</p>
+					<p><strong>تاريخ الإنشاء:</strong> <span id="view_creation_date">2024-10-12</span></p>
+					<p><strong>عدد الأيام الأقصى:</strong> <span id="view_days_until_deadline">5</span></p>
+					<p><strong>الحالة:</strong> <span id="view_status">نشط</span></p>
+					<p><strong>المرفق:</strong> <a href="#" id="view_attachment" target="_blank">تحميل المرفق</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="printFile()">طباعة</button>
+					<button type="button" class="btn btn-secondary" onclick="printAllEdits()">طباعة كل التعديلات</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+				</div>
+			</div>
+		</div>
        
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
