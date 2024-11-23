@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>نظام إدارة الملفات</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
+    <style>
+	
+		* {
+		direction: RTL;
+		text-align:right;
+		}
+        body {
+            background-color: #f8f9fa;
+			font-family: 'Tajawal', sans-serif;
+			font-weight:bold;
+
+        }
+		h2 {
+		text-align:right;
+		}
+        header {
+            background-color: #891b1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: #891b1e;
+            text-decoration: none;
+        }
+
+		.btn {
+		margin: 4px;
+		}
+        .btn-primary {
+            background-color: #efc652;
+            border-color: #efc652;
+            color: #891b1e;
+			
+        }
+        .table th, .table td {
+            text-align: right;
+        }
+
+		.table thead th {
+			background: #891b1e;
+			color:#ffffff;
+		}
+
+		label {
+			width: 100%;
+			text-align: right;
+		}
+
+		.late {
+            background-color: #ffcccc;
+        }
+
+		.suspended {
+            background-color: #f9b44d96;
+        }
+		
+		.done {
+            background-color: #48b0df2e;
+        }
+
+		.tabs-group {
+		    text-align:center;
+			background-color: #efc652;
+		}
+
+		.tabs.active {
+			background: #891b1e;
+			color: #ffffff;
+            border-radius: 0 0 10px 10px;
+			padding: 6px;
+		}
+
+		.tabs.active a {
+			color: #ffffff;
+   
+		}
+
+		.page-link {
+		 color: #931924;
+		}
+
+		.autocomplete-items {
+		  position: absolute;
+		  border: 1px solid #ddd;
+		  border-bottom: none;
+		  border-top: none;
+		  z-index: 1;
+		}
+
+		.autocomplete-items div {
+		  padding: 10px;
+		  cursor: pointer;
+		  background-color: #fff;
+		  border-bottom: 1px solid #ddd;
+		}
+
+		.autocomplete-items div:hover   
+		 {
+		  background-color: #f1f1f1;
+		}
+		
+		.fa-solid {
+		 
+		}
+		.fa-circle-play {
+			 color: #197b93;
+			 cursor: pointer;
+			 margin: 4px;
+		}
+
+		.fa-circle-pause {
+			 color: #931924;
+			cursor: pointer;
+			margin: 4px;
+		}
+		.fa-circle-check {
+			 color: #009635;
+			 cursor: pointer;
+			margin: 4px;
+		}
+		
+		#viewFileModal strong {
+			color: #b12a2f;
+			}
+
+		table td:nth-child(1) , table td:nth-child(3) , table td:nth-child(9)   , table td:nth-child(10)  {white-space: nowrap;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نظام إدارة الملفات </h1>
+    </header>
+    <nav>
+        <ul class="tabs-group"   >
+            <li class="tabs active" ><a href="index.html">الملفات</a> </li>
+            <li class="tabs " ><a href="search.html">البحث</a> </li>
+            <li class="tabs" style="display:none;" ><a href="#">الموظفون</a> </li>
+            <li class="tabs" style="display:none;" ><a href="#">التصنيفات</a> </li>
+            <li class="tabs" style="" ><a href="archive.html">أرشيف</a> </li>
+            <li  class="tabs" style="display:none;"><a href="#"  >التقارير</a> </li>
+            <li class="tabs" style="" ><a href="params.html">الإعدادات</a> </li>
+        </ul>
+    </nav>
+	
+			
+
+    <div class="container mt-4">
+        <h2>قائمة الملفات</h2>
+		
+		<div class="input-group mb-3">
+		  <input type="text" class="form-control" id="searchInput" placeholder="بحث عن ملف..." aria-label="Search" aria-describedby="searchButton">
+		  <button class="btn btn-primary" type="button" id="searchButton">بحث سريع</button>
+		</div>
+		
+        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addFileModal">إضافة ملف جديد</button>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr >
+					<th>تاريخ الإضافة</th>
+                    <th>رقم الملف</th>
+                    <th>إلى</th>
+                    <th>عنوان رئيسي</th>
+                    <th>عنوان فرعي</th>
+                    <th>الموضوع</th>
+                    <th>مدة المهمة</th>
+                    <th>يوم من تاريخ الإدخال</th>
+                    <th></th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="done">
+					<td>2024-10-12</td>
+                    <td>1/201</td>
+                    <td>سامي علي</td>
+                    <td>مشتريات</td>
+                    <td>لحوم</td>
+                    <td>شراء لحوم من حفر الباطن</td>
+                    <td>5</td>
+                    <td>30</td>
+                   <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
+                    <td>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addFileModal">تعديل</button>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>
+	
+						<button class="btn btn-danger">أرشفة</button>
+                    </td>
+                </tr>
+                <tr class="done">
+                    <td>2024-11-02</td>
+                    <td>2/201</td>
+                    <td>سامي علي</td>
+                    <td>مشتريات</td>
+                    <td>لحوم</td>
+                    <td>شراء لحوم من نجران</td>
+                    <td>6</td>
+                    <td>10</td>
+                    <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
+                    <td>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                    </td>
+                    </td>
+                </tr>
+				<tr class="done">
+                    <td>2024-11-11</td>
+                    <td>3/201</td>
+                    <td>سامي علي</td>
+                    <td>مشتريات</td>
+                    <td>لحوم</td>
+                    <td>شراء لحوم من القصيم</td>
+                    <td>6</td>
+                    <td>1</td>
+                    <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
+                    <td>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                    </td>
+                    </td>
+                </tr>
+                <tr class="late" >
+                    <td>2024-10-16</td>
+                    <td>1/204</td>
+                    <td>علي حسن</td>
+                    <td>مشتريات</td>
+                    <td>خضار</td>
+                    <td>شراء خضار من الطائف</td>
+                    <td>3</td>
+                    <td>26</td>
+                    <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addFileModal">تعديل</button>
+						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
+                         <button class="btn btn-danger">أرشفة</button>
+                    </td>
+                </tr>
+                <tr class="late" >
+                    <td>2024-10-20</td>
+                    <td>2/204</td>
+                    <td>علي حسن</td>
+                    <td>مشتريات</td>
+                    <td>خضار</td>
+                    <td>شراء من الشفا</td>
+                    <td>1</td>
+                    <td>22</td>
+                    <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
+                    <td>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                    </td>
+                </tr>
+                <tr >
+                    <td>2024-10-14</td>
+                    <td>1/203</td>
+                    <td>فاطمة زيد</td>
+                    <td>تقارير</td>
+                    <td>ربع سنوية</td>
+                    <td>تقرير حول مداخيل قسم الحفلات</td>
+                    <td>7</td>
+                    <td>28</td>
+                     <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
+                    <td>
+					    <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addFileModal">تعديل</button>
+						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
+                         <button class="btn btn-danger">أرشفة</button>
+                    </td>
+                </tr>
+				
+				<tr class="suspended">
+                    <td>2024-10-14</td>
+                    <td>1/202</td>
+                    <td>فهد حسن</td>
+                    <td>تقارير</td>
+                    <td>ربع سنوية</td>
+                    <td>تقرير حول مداخيل قسم الحفلات</td>
+                    <td>7</td>
+                    <td>28</td>
+                    <td><i class="fa-solid fa-circle-play fa-rotate-180 fa-2xl"></i></td>
+                    <td>
+					 <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addFileModal">تعديل</button>
+						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
+                         <button class="btn btn-danger">أرشفة</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">التالي</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Modal for adding/editing files -->
+        <div class="modal fade" id="addFileModal" tabindex="-1" role="dialog" aria-labelledby="addFileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addFileModalLabel">إضافة ملف</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group" style="display:none">
+                                <label for="file_number" >رقم الملف/الإصدار: 123</label>
+                                <input type="readonly" class="form-control" id="file_number" name="file_number"  >
+                            </div>
+                            <div class="form-group">
+                                <label for="to_user">إلى:</label>
+                                <input type="text" class="form-control" id="to_user" name="to_user" required>
+								<div id="to_user_complete" class="autocomplete-items"></div>	
+                            </div>
+                            <div class="form-group">
+                                <label for="main_category">التصنيف الرئيسي:</label>
+                                <input type="text" class="form-control" id="main_category" name="main_category" required>
+								<div id="main_category_complete" class="autocomplete-items"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sub_category">التصنيف الفرعي:</label>
+                                <input type="text" class="form-control" id="sub_category" name="sub_category" required>
+								<div id="sub_category_complete" class="autocomplete-items"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">الموضوع:</label>
+                                <textarea class="form-control" id="subject" name="subject" rows="4" required></textarea>
+                            </div>
+							 <div class="form-group">
+                                <label for="Attached">مرفق:</label>
+                                <input type="file" class="form-control" id="attachment" name="attachment" >
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label for="creation_date">تاريخ الإنشاء:</label>
+								<input type="date" class="form-control" id="creation_date" name="creation_date" >
+                            </div>
+                            <div class="form-group">
+                                <label for="days_until_deadline">عدد الأيام الأقصى:</label>
+                                <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" required>
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label for="status">الحالة:</label>
+                                <select class="form-control" id="status" name="status" >
+                                    <option value="active">نشط</option>
+                                    <option value="completed">مكتمل</option>
+                                    <option value="archived">مؤرشف</option>
+                                    <option value="suspended">معلق</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">حفظ الملف</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- Modal for viewing files -->
+		<div class="modal fade" id="viewFileModal" tabindex="-1" role="dialog" aria-labelledby="viewFileModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="viewFileModalLabel">عرض الملف</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p><strong>رقم الملف:</strong> 123/2</p>
+					<p><strong>إلى:</strong> <span id="view_to_user">سامي علي</span></p>
+					<p><strong>التصنيف الرئيسي:</strong> <span id="view_main_category">مشتريات</span></p>
+					<p><strong>التصنيف الفرعي:</strong> <span id="view_sub_category">لحوم</span></p>
+					<p><strong>الموضوع:</strong></p>
+					<p>شراء لحوم من نجران</p>
+					<p><strong>تاريخ الإنشاء:</strong> <span id="view_creation_date">2024-10-12</span></p>
+					<p><strong>عدد الأيام الأقصى:</strong> <span id="view_days_until_deadline">5</span></p>
+					<p><strong>الحالة:</strong> <span id="view_status">نشط</span></p>
+					<p><strong>المرفق:</strong> <a href="#" id="view_attachment" target="_blank">تحميل المرفق</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="printFile()">طباعة</button>
+					<button type="button" class="btn btn-secondary" onclick="printAllEdits()">طباعة كل التعديلات</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		<!-- Modal for adding/editing files -->
+        <div class="modal fade" id="ediFileModal" tabindex="-1" role="dialog" aria-labelledby="editFileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editFileModalLabel">إضافة ملف</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group" style="">
+                                <label for="file_number" >رقم الملف 123/2</label>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">الموضوع:</label>
+                                <textarea class="form-control" id="add-subject" name="add-subject" rows="4" required></textarea>
+                            </div>
+							 <div class="form-group">
+                                <label for="Attached">مرفق:</label>
+                                <input type="file" class="form-control" id="add-attachment" name="add-attachment" >
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label for="creation_date">تاريخ الإنشاء:</label>
+								<input type="date" class="form-control" id="creation_date" name="creation_date" >
+                            </div>
+                            <div class="form-group">
+                                <label for="days_until_deadline">عدد الأيام الأقصى:</label>
+                                <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" required>
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label for="status">الحالة:</label>
+                                <select class="form-control" id="status" name="status" required>
+                                    <option value="active">نشط</option>
+                                    <option value="completed">مكتمل</option>
+                                    <option value="archived">مؤرشف</option>
+                                    <option value="suspended">معلق</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn">حفظ الملف</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+
+<script>
+
+	document.addEventListener('DOMContentLoaded', function() {
+    // Initialize ClassicEditor for specific elements with Arabic support
+    ClassicEditor.create(document.querySelector('#subject'), {
+        language: { ui: 'ar', content: 'ar' }
+    }).catch(error => console.error(error));
+
+    ClassicEditor.create(document.querySelector('#add-subject'), {
+        language: { ui: 'ar', content: 'ar' }
+    }).catch(error => console.error(error));
+
+    // Autocomplete options
+    const toUserOptions = ["سامي علي", "محمد عبدالله", "خالد أحمد", "فهد حسن", "عمر سعيد"];
+    const categoryOptions = ["صيانة", "تشغيل", "جودة", "مخزون", "موظفين"];
+    const subCategoryOptions = [
+        "يومية", "دورية", "تصليحات", "صيانة وقائية", "عقود صيانة",
+        "فتح وإغلاق المطعم", "نظافة المطعم", "إدارة الطلبات", "خدمة العملاء",
+        "مراقبة جودة الطعام", "سلامة الغذاء", "تقييم العملاء",
+        "طلب المواد", "استلام البضائع", "إدارة المخازن", "الجرد",
+        "جداول العمل", "الحضور والانصراف", "التدريب", "التقييم"
+    ];
+
+    initAutocomplete('sub_category', subCategoryOptions);
+    initAutocomplete('main_category', categoryOptions);
+    initAutocomplete('to_user', toUserOptions);
+
+    // Initialize autocomplete
+    function initAutocomplete(autoId, options) {
+        const autoCompleteInput = document.getElementById(autoId);
+        const autoCompleteList = document.getElementById(`${autoId}_complete`);
+
+        autoCompleteInput.addEventListener('focus', () => updateAutocomplete(autoId, options));
+        autoCompleteInput.addEventListener('keyup', () => updateAutocomplete(autoId, options));
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest(`#${autoId}`) && !e.target.closest(`#${autoId}_complete`)) {
+                autoCompleteList.style.display = 'none';
+            }
+        });
+    }
+
+    // Update autocomplete dropdown
+    function updateAutocomplete(autoId, options) {
+        const inputVal = document.getElementById(autoId).value.toLowerCase();
+        const autoCompleteList = document.getElementById(`${autoId}_complete`);
+        
+        autoCompleteList.innerHTML = '';
+
+        options.filter(option => option.toLowerCase().startsWith(inputVal)).slice(0, 10).forEach(option => {
+            const div = document.createElement('div');
+            div.textContent = option;
+            div.addEventListener('click', function() {
+                document.getElementById(autoId).value = this.textContent;
+                autoCompleteList.style.display = 'none';
+            });
+            autoCompleteList.appendChild(div);
+        });
+
+        autoCompleteList.style.display = 'block';
+    }
+
+    // Print-related functions
+    window.printFile = function() { window.open("print.html#2"); };
+    window.printAllEdits = function() { window.open("print.html"); };
+
+    // Button click for submit
+    document.querySelectorAll('button[type="submit"]').forEach(button => {
+        button.addEventListener('click', function() {
+            alert('عرض فقط');
+            this.closest('.modal').style.display = 'none';
+        });
+    });
+
+    // Search function
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        document.querySelectorAll('table tbody tr').forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            row.style.display = rowText.includes(searchTerm) ? '' : 'none';
+        });
+    });
+});
+</script>
+</body>
+</html>
+
+

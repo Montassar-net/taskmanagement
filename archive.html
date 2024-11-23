@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>نظام إدارة الملفات</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
+    <style>
+	
+		* {
+		direction: RTL;
+		text-align:right;
+		}
+        body {
+            background-color: #f8f9fa;
+			font-family: 'Tajawal', sans-serif;
+			font-weight:bold;
+
+        }
+		h2 {
+		text-align:right;
+		}
+        header {
+            background-color: #891b1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: #891b1e;
+            text-decoration: none;
+        }
+
+		.btn {
+		margin: 4px;
+		}
+        .btn-primary {
+            background-color: #efc652;
+            border-color: #efc652;
+            color: #891b1e;
+			
+        }
+        .table th, .table td {
+            text-align: right;
+        }
+
+		.table thead th {
+			background: #891b1e;
+			color:#ffffff;
+		}
+
+		label {
+			width: 100%;
+			text-align: right;
+		}
+
+		.late {
+            background-color: #ffcccc;
+        }
+
+		.suspended {
+            background-color: #f9b44d96;
+        }
+		
+		.done {
+            background-color: #48b0df2e;
+        }
+
+		.tabs-group {
+		    text-align:center;
+			background-color: #efc652;
+		}
+
+		.tabs.active {
+			background: #891b1e;
+			color: #ffffff;
+            border-radius: 0 0 10px 10px;
+			padding: 6px;
+		}
+
+		.tabs.active a {
+			color: #ffffff;
+   
+		}
+
+		.page-link {
+		 color: #931924;
+		}
+
+		.autocomplete-items {
+		  position: absolute;
+		  border: 1px solid #ddd;
+		  border-bottom: none;
+		  border-top: none;
+		  z-index: 1;
+		}
+
+		.autocomplete-items div {
+		  padding: 10px;
+		  cursor: pointer;
+		  background-color: #fff;
+		  border-bottom: 1px solid #ddd;
+		}
+
+		.autocomplete-items div:hover   
+		 {
+		  background-color: #f1f1f1;
+		}
+		
+		.fa-solid {
+		 
+		}
+		.fa-circle-play {
+			 color: #197b93;
+			 cursor: pointer;
+			 margin: 4px;
+		}
+
+		.fa-circle-pause {
+			 color: #931924;
+			cursor: pointer;
+			margin: 4px;
+		}
+		.fa-circle-check {
+			 color: #009635;
+			 cursor: pointer;
+			margin: 4px;
+		}
+		
+		#viewFileModal strong {
+			color: #b12a2f;
+			}
+
+		table td:nth-child(1) , table td:nth-child(3) , table td:nth-child(9)   , table td:nth-child(10)  {white-space: nowrap;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نظام إدارة الملفات </h1>
+    </header>
+    <nav>
+        <ul class="tabs-group"   >
+            <li class="tabs " ><a href="index.html">الملفات</a> </li>
+            <li class="tabs " ><a href="search.html">البحث</a> </li>
+            <li class="tabs" style="display:none;" ><a href="#">الموظفون</a> </li>
+            <li class="tabs " style="display:none;" ><a href="#">التصنيفات</a> </li>
+            <li class="tabs active" style="" ><a href="archive.html">أرشيف</a> </li>
+            <li  class="tabs" style="display:none;"><a href="#"  >التقارير</a> </li>
+            <li class="tabs" style="" ><a href="params.html">الإعدادات</a> </li>
+        </ul>
+    </nav>
+	
+			
+
+    <div class="container mt-4">
+        <h2>أرشيف</h2>
+		
+		<div class="input-group mb-3">
+		  <input type="text" class="form-control" id="searchInput" placeholder="بحث عن ملف..." aria-label="Search" aria-describedby="searchButton">
+		  <button class="btn btn-primary" type="button" id="searchButton">بحث سريع</button>
+		</div>
+		
+   
+        <table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>تاريخ الإضافة</th>
+            <th>رقم الملف</th>
+            <th>إلى</th>
+            <th>عنوان رئيسي</th>
+            <th>عنوان فرعي</th>
+            <th>الموضوع</th>
+            <th>مدة المهمة</th>
+            <th>يوم من تاريخ الإدخال</th>
+            <th>حالة الأرشفة</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="done">
+            <td>2024-10-12</td>
+            <td>1/201</td>
+            <td>سامي علي</td>
+            <td>مشتريات</td>
+            <td>لحوم</td>
+            <td>شراء لحوم من حفر الباطن</td>
+            <td>5</td>
+            <td>30</td>
+            <td>مؤرشف</td>
+        </tr>
+        <tr class="done">
+            <td>2024-11-02</td>
+            <td>2/201</td>
+            <td>سامي علي</td>
+            <td>مشتريات</td>
+            <td>لحوم</td>
+            <td>شراء لحوم من نجران</td>
+            <td>6</td>
+            <td>10</td>
+            <td>غير مؤرشف</td>
+        </tr>
+        <tr class="done">
+            <td>2024-11-11</td>
+            <td>3/201</td>
+            <td>سامي علي</td>
+            <td>مشتريات</td>
+            <td>لحوم</td>
+            <td>شراء لحوم من القصيم</td>
+            <td>6</td>
+            <td>1</td>
+            <td>غير مؤرشف</td>
+        </tr>
+        <tr class="late">
+            <td>2024-10-16</td>
+            <td>1/204</td>
+            <td>علي حسن</td>
+            <td>مشتريات</td>
+            <td>خضار</td>
+            <td>شراء خضار من الطائف</td>
+            <td>3</td>
+            <td>26</td>
+            <td>مؤرشف</td>
+        </tr>
+        <tr class="late">
+            <td>2024-10-20</td>
+            <td>2/204</td>
+            <td>علي حسن</td>
+            <td>مشتريات</td>
+            <td>خضار</td>
+            <td>شراء من الشفا</td>
+            <td>1</td>
+            <td>22</td>
+            <td>غير مؤرشف</td>
+        </tr>
+        <tr>
+            <td>2024-10-14</td>
+            <td>1/203</td>
+            <td>فاطمة زيد</td>
+            <td>تقارير</td>
+            <td>ربع سنوية</td>
+            <td>تقرير حول مداخيل قسم الحفلات</td>
+            <td>7</td>
+            <td>28</td>
+            <td>مؤرشف</td>
+        </tr>
+        <tr class="suspended">
+            <td>2024-10-14</td>
+            <td>1/202</td>
+            <td>فهد حسن</td>
+            <td>تقارير</td>
+            <td>ربع سنوية</td>
+            <td>تقرير حول مداخيل قسم الحفلات</td>
+            <td>7</td>
+            <td>28</td>
+            <td>مؤرشف</td>
+        </tr>
+    </tbody>
+</table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">التالي</a>
+                </li>
+            </ul>
+        </nav>
+       
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+
+<script>
+
+	
+
+    // Print-related functions
+    window.printFile = function() { window.open("print.html#2"); };
+    window.printAllEdits = function() { window.open("print.html"); };
+
+    // Button click for submit
+    document.querySelectorAll('button[type="submit"]').forEach(button => {
+        button.addEventListener('click', function() {
+            alert('عرض فقط');
+            this.closest('.modal').style.display = 'none';
+        });
+    });
+
+    // Search function
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        document.querySelectorAll('table tbody tr').forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            row.style.display = rowText.includes(searchTerm) ? '' : 'none';
+        });
+    });
+
+</script>
+</body>
+</html>
+
+

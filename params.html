@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>نظام إدارة الملفات</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
+    <style>
+	
+		* {
+		direction: RTL;
+		text-align:right;
+		}
+        body {
+            background-color: #f8f9fa;
+			font-family: 'Tajawal', sans-serif;
+			font-weight:bold;
+
+        }
+		h2 {
+		text-align:right;
+		}
+        header {
+            background-color: #891b1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: #891b1e;
+            text-decoration: none;
+        }
+
+		.btn {
+		margin: 4px;
+		}
+        .btn-primary {
+            background-color: #efc652;
+            border-color: #efc652;
+            color: #891b1e;
+			
+        }
+        .table th, .table td {
+            text-align: right;
+        }
+
+		.table thead th {
+			background: #891b1e;
+			color:#ffffff;
+		}
+
+		label {
+			width: 100%;
+			text-align: right;
+		}
+
+		.late {
+            background-color: #ffcccc;
+        }
+
+		.suspended {
+            background-color: #f9b44d96;
+        }
+		
+		.done {
+            background-color: #48b0df2e;
+        }
+
+		.tabs-group {
+		    text-align:center;
+			background-color: #efc652;
+		}
+
+		.tabs.active {
+			background: #891b1e;
+			color: #ffffff;
+            border-radius: 0 0 10px 10px;
+			padding: 6px;
+		}
+
+		.tabs.active a {
+			color: #ffffff;
+   
+		}
+
+		.page-link {
+		 color: #931924;
+		}
+
+		.autocomplete-items {
+		  position: absolute;
+		  border: 1px solid #ddd;
+		  border-bottom: none;
+		  border-top: none;
+		  z-index: 1;
+		}
+
+		.autocomplete-items div {
+		  padding: 10px;
+		  cursor: pointer;
+		  background-color: #fff;
+		  border-bottom: 1px solid #ddd;
+		}
+
+		.autocomplete-items div:hover   
+		 {
+		  background-color: #f1f1f1;
+		}
+		
+		.fa-solid {
+		 
+		}
+		.fa-circle-play {
+			 color: #197b93;
+			 cursor: pointer;
+			 margin: 4px;
+		}
+
+		.fa-circle-pause {
+			 color: #931924;
+			cursor: pointer;
+			margin: 4px;
+		}
+		.fa-circle-check {
+			 color: #009635;
+			 cursor: pointer;
+			margin: 4px;
+		}
+		
+		#viewFileModal strong {
+			color: #b12a2f;
+			}
+
+		table td:nth-child(1) , table td:nth-child(3) , table td:nth-child(9)   , table td:nth-child(10)  {white-space: nowrap;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نظام إدارة الملفات </h1>
+    </header>
+    <nav>
+        <ul class="tabs-group"   >
+            <li class="tabs " ><a href="index.html">الملفات</a> </li>
+            <li class="tabs " ><a href="search.html">البحث</a> </li>
+            <li class="tabs" style="display:none;" ><a href="#">الموظفون</a> </li>
+            <li class="tabs " style="display:none;" ><a href="#">التصنيفات</a> </li>
+            <li class="tabs " style="" ><a href="archive.html">أرشيف</a> </li>
+            <li class="tabs active" style="" ><a href="params.html">الإعدادات</a> </li>
+        </ul>
+    </nav>
+<h1>تحت الدراسة</h1>
+</body>

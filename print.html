@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print File Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+	
+	* {
+		direction: RTL;
+		text-align:right;
+		}
+		
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #000;
+        }
+        h1, h2 {
+            color: #891b1e;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .section-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #efc652;
+            border-bottom: 2px solid #efc652;
+            padding-bottom: 5px;
+        }
+        @media print {
+            body {
+                margin: 0;
+            }
+        }
+		
+		div{
+			padding: 4px;
+		}
+		
+		.receipt-line {
+            border-bottom: 1px dashed #000;
+            display: inline-block;
+            width: 300px; /* Adjust width based on preference */
+            text-align: center; /* Center the text in the line */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <header class="text-center">
+            <h1>تفاصيل الملف</h1>
+          
+        </header>
+
+        <div id="sub-0" class="section">
+            <div class="section-header">الملف رقم 123</div>
+            <div class="row">
+     
+				<div class="col-md-6"><strong>من:</strong> أحمد محمد</div>
+                <div class="col-md-6"><strong>إلى:</strong> سامي علي</div>
+                <div class="col-md-6"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
+                <div class="col-md-6"><strong>التصنيف الفرعي:</strong> لحوم</div>
+            </div>
+        </div>
+
+        <div id="sub-1" class="section">
+			<div class="section-header">الموضوع رقم (123 / 1)</div>
+            <div class="row">
+   
+                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
+				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
+				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-10-12</div>
+                <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+                
+            </div>
+        </div>
+		
+		
+		<div id="sub-2" class="section">
+			<div class="section-header">إضافة رقم (123 / 2) </div>
+            <div class="row">
+   
+                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من نجران</div>
+				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
+				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-02</div>
+                <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+                
+            </div>
+        </div>
+		
+		<div id="sub-3" class="section">
+			<div class="section-header">إضافة رقم (123 / 3)</div>
+            <div class="row">
+   
+                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من القصيم</div>
+				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
+				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
+                <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+                
+            </div>
+        </div>
+		
+		<div id="sign" class="section" style="display:none;" >
+            <div class="section-header">استلام الخطاب</div>
+			<br>
+            <p>أنا / <span class="receipt-line"></span> استملت صورة من الخطاب <span class="receipt-line"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Automatically open the print dialog when the page loads
+        window.onload = function() {
+            //window.print();
+			
+			var url = window.location.href,
+			hash = url.split('#')[1];
+
+				if (hash) {
+					var sections = document.getElementsByClassName('section');
+
+					for (var i = 0; i < sections.length; i ++) {
+						sections[i].style.display = 'none';
+					}
+					  document.getElementById("sign").style.display = 'block';
+					  document.getElementById("sub-0").style.display = 'block';
+					  document.getElementById("sub-"+hash).style.display = 'block';
+				} else {
+					// do something else
+				}
+        };
+    </script>
+</body>
+</html>
