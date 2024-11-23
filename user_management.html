@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>نظام إدارة الملفات</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
+    <style>
+	
+		* {
+		direction: RTL;
+		text-align:right;
+		}
+        body {
+            background-color: #f8f9fa;
+			font-family: 'Tajawal', sans-serif;
+			font-weight:bold;
+
+        }
+		h2 {
+		text-align:right;
+		}
+        header {
+            background-color: #891b1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: #891b1e;
+            text-decoration: none;
+        }
+
+		.btn {
+		margin: 4px;
+		}
+        .btn-primary {
+            background-color: #efc652;
+            border-color: #efc652;
+            color: #891b1e;
+			
+        }
+        .table th, .table td {
+            text-align: right;
+        }
+
+		.table thead th {
+			background: #891b1e;
+			color:#ffffff;
+		}
+
+		label {
+			width: 100%;
+			text-align: right;
+		}
+
+		.late {
+            background-color: #ffcccc;
+        }
+
+		.suspended {
+            background-color: #f9b44d96;
+        }
+		
+		.done {
+            background-color: #48b0df2e;
+        }
+
+		.tabs-group {
+		    text-align:center;
+			background-color: #efc652;
+		}
+
+		.tabs.active {
+			background: #891b1e;
+			color: #ffffff;
+            border-radius: 0 0 10px 10px;
+			padding: 6px;
+		}
+
+		.tabs.active a {
+			color: #ffffff;
+   
+		}
+
+		.page-link {
+		 color: #931924;
+		}
+
+		.autocomplete-items {
+		  position: absolute;
+		  border: 1px solid #ddd;
+		  border-bottom: none;
+		  border-top: none;
+		  z-index: 1;
+		}
+
+		.autocomplete-items div {
+		  padding: 10px;
+		  cursor: pointer;
+		  background-color: #fff;
+		  border-bottom: 1px solid #ddd;
+		}
+
+		.autocomplete-items div:hover   
+		 {
+		  background-color: #f1f1f1;
+		}
+		
+		.fa-solid {
+		 
+		}
+		.fa-circle-play {
+			 color: #197b93;
+			 cursor: pointer;
+			 margin: 4px;
+		}
+
+		.fa-circle-pause {
+			 color: #931924;
+			cursor: pointer;
+			margin: 4px;
+		}
+		.fa-circle-check {
+			 color: #009635;
+			 cursor: pointer;
+			margin: 4px;
+		}
+		
+		#viewFileModal strong {
+			color: #b12a2f;
+			}
+
+		table td:nth-child(1) , table td:nth-child(3) , table td:nth-child(9)   , table td:nth-child(10)  {white-space: nowrap;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نظام إدارة الملفات</h1>
+    </header>
+    <nav>
+        <ul class="tabs-group">
+            <li class="tabs"><a href="index.html">الملفات</a></li>
+            <li class="tabs"><a href="search.html">البحث</a></li>
+            <li class="tabs active"><a href="user_management.html">إدارة المستخدمين</a></li>
+            <li class="tabs" style="display:none;"><a href="#">التصنيفات</a></li>
+            <li class="tabs"><a href="archive.html">أرشيف</a></li>
+            <li class="tabs" style="display:none;"><a href="#">التقارير</a></li>
+            <li class="tabs"><a href="params.html">الإعدادات</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>إدارة المستخدمين</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="userSearchInput" placeholder="بحث عن مستخدم..." aria-label="User Search" aria-describedby="userSearchButton">
+            <button class="btn btn-primary" type="button" id="userSearchButton">بحث سريع</button>
+        </div>
+        
+        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addUserModal">إضافة مستخدم جديد</button>
+        
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>اسم المستخدم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>حالة الحساب</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>محمد عبدالله</td>
+                    <td>mohammad@example.com</td>
+                    <td>نشط</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#viewUserModal">عرض</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#editUserModal">تعديل</button>
+                        <button class="btn btn-danger">حذف</button>
+                    </td>
+                </tr>
+                <!-- Additional users can be added here -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">التالي</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Modal for adding a new user -->
+        <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addUserModalLabel">إضافة مستخدم جديد</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+					<div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="new_username">اسم المستخدم:</label>
+                                <input type="text" class="form-control" id="new_username" name="new_username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new_email">البريد الإلكتروني:</label>
+                                <input type="email" class="form-control" id="new_email" name="new_email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new_status">حالة الحساب:</label>
+                                <select class="form-control" id="new_status" name="new_status">
+                                    <option value="active">نشط</option>
+                                    <option value="inactive">غير نشط</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">حفظ المستخدم</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for viewing user details -->
+        <div class="modal fade" id="viewUserModal" tabindex="-1" role="dialog" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="viewUserModalLabel">عرض معلومات المستخدم</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>اسم المستخدم:</strong> محمد عبدالله</p>
+                        <p><strong>البريد الإلكتروني:</strong> mohammad@example.com</p>
+                        <p><strong>حالة الحساب:</strong> نشط</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for editing user details -->
+        <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">تعديل معلومات المستخدم</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="edit_username">اسم المستخدم:</label>
+                                <input type="text" class="form-control" id="edit_username" name="edit_username" value="محمد عبدالله" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit_email">البريد الإلكتروني:</label>
+                                <input type="email" class="form-control" id="edit_email" name="edit_email" value="mohammad@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit_status">حالة الحساب:</label>
+                                <select class="form-control" id="edit_status" name="edit_status">
+                                    <option value="active">نشط</option>
+                                    <option value="inactive">غير نشط</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">تحديث المستخدم</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Search function for users
+            document.getElementById('userSearchButton').addEventListener('click', function () {
+                const searchTerm = document.getElementById('userSearchInput').value.toLowerCase();
+                document.querySelectorAll('table tbody tr').forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    row.style.display = rowText.includes(searchTerm) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
