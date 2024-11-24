@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print File Details</title>
+    <title>مشاهد الملف</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
 	
@@ -45,34 +45,52 @@
             width: 300px; /* Adjust width based on preference */
             text-align: center; /* Center the text in the line */
         }
+		
+
+		.section {
+			page-break-after: avoid;
+		}
+		
+		@media print {
+		  .print-button {
+			display: none;
+		  }
+		  
+		  #attachment_link{
+		  display: none;
+		  }
+		}
     </style>
 </head>
 <body>
     <div class="container mt-5 mb-5">
         <header class="text-center">
             <h1>تفاصيل الملف</h1>
-          
+          <button class="print-button btn btn-primary" onclick="window.print()">طباعة</button>
         </header>
 
         <div id="sub-0" class="section">
             <div class="section-header">الملف رقم 123</div>
             <div class="row">
      
-				<div class="col-md-6"><strong>من:</strong> أحمد محمد</div>
-                <div class="col-md-6"><strong>إلى:</strong> سامي علي</div>
-                <div class="col-md-6"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
-                <div class="col-md-6"><strong>التصنيف الفرعي:</strong> لحوم</div>
+				<div class="col-md-4"><strong>من:</strong> أحمد محمد</div>
+                <div class="col-md-4"><strong>إلى:</strong> سامي علي</div>
+                <div class="col-md-4"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
+                <div class="col-md-4"><strong>التصنيف الفرعي:</strong> لحوم</div>
+                <div class="col-md-4"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
+                <div class="col-md-4" id="attachment_link" ><strong>المرفق:</strong> <a href="#" >مشاهدة المرفق</a></div>
             </div>
         </div>
 
         <div id="sub-1" class="section">
-			<div class="section-header">الموضوع رقم (123 / 1)</div>
+			<div class="section-header"> رقم (123 / 1)</div>
             <div class="row">
    
-                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
+               
 				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-10-12</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div>
                 
             </div>
         </div>
@@ -82,10 +100,11 @@
 			<div class="section-header">إضافة رقم (123 / 2) </div>
             <div class="row">
    
-                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من نجران</div>
+                
 				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-02</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
                 
             </div>
         </div>
@@ -94,10 +113,11 @@
 			<div class="section-header">إضافة رقم (123 / 3)</div>
             <div class="row">
    
-                <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من القصيم</div>
+                
 				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
                 
             </div>
         </div>
