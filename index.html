@@ -142,6 +142,10 @@
 			}
 
 		table td:nth-child(1) , table td:nth-child(3) , table td:nth-child(9)   , table td:nth-child(10)  {white-space: nowrap;}
+		
+		label span {
+			color:#999;
+		}
     </style>
 </head>
 <body>
@@ -341,17 +345,17 @@
 								<div id="to_user_complete" class="autocomplete-items"></div>	
                             </div>
                             <div class="form-group">
-                                <label for="main_category">التصنيف الرئيسي:</label>
+                                <label for="main_category">التصنيف الرئيسي: <span>(<input type="checkbox"  > تذكر التصنيف  ) </span></label>
                                 <input type="text" class="form-control" id="main_category" name="main_category" required>
 								<div id="main_category_complete" class="autocomplete-items"></div>
                             </div>
                             <div class="form-group">
-                                <label for="sub_category">التصنيف الفرعي:</label>
+                                <label for="sub_category">التصنيف الفرعي: <span>(<input type="checkbox"  > تذكر التصنيف  ) </span></label>
                                 <input type="text" class="form-control" id="sub_category" name="sub_category" required>
 								<div id="sub_category_complete" class="autocomplete-items"></div>
                             </div>
                             <div class="form-group">
-                                <label for="subject">الموضوع:</label>
+                                <label for="subject">الموضوع: <span>(<input type="checkbox"  > تذكر الموضوع ) </span> </label>
 								<input type="text" class="form-control" id="subject" name="subject" required>
                                 
                             </div>
@@ -526,7 +530,7 @@
                                 <textarea class="form-control" id="addText" name="addText" rows="4" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="days_until_deadline">عدد الأيام الأقصى:</label>
+                                <label for="days_until_deadline">عدد الأيام الأقصى:</label> 
                                 <input type="number" class="form-control" id="edit_days_until_deadline" value="" name="days_until_deadline" required>
                             </div>
 							
