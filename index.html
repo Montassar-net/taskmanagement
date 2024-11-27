@@ -19,6 +19,10 @@
 			font-weight:bold;
 
         }
+		
+		.modal-dialog {
+        max-width: 80%;
+		}
 		h2 {
 		text-align:right;
 		}
@@ -202,7 +206,7 @@
                     <td>30</td>
                    <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
                     <td>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+						<button class="btn btn-primary" onclick="printAllEdits()" >مشاهدة</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#editFileModal">تعديل</button>
 						<button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>
 	
@@ -220,7 +224,7 @@
                     <td>10</td>
                     <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
                     <td>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+					<button class="btn btn-primary" onclick="printFile(2)" >مشاهدة</button>
                     </td>
                     </td>
                 </tr>
@@ -235,7 +239,7 @@
                     <td>1</td>
                     <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
                     <td>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+					<button class="btn btn-primary" onclick="printFile(3)" >مشاهدة</button>
                     </td>
                     </td>
                 </tr>
@@ -250,7 +254,7 @@
                     <td>26</td>
                     <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
                     <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+                        <button class="btn btn-primary" onclick="printAllEdits()" >مشاهدة</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#editFileModal">تعديل</button>
 						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
                          <button class="btn btn-danger">أرشفة</button>
@@ -267,7 +271,7 @@
                     <td>22</td>
                     <td><!--<i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i>--></td> 
                     <td>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+					<button class="btn btn-primary" onclick="printFile(2)">مشاهدة</button>
                     </td>
                 </tr>
                 <tr >
@@ -281,7 +285,7 @@
                     <td>28</td>
                      <td><i class="fa-solid fa-circle-pause fa-2xl"></i><i class="fa-solid fa-circle-check fa-2xl"></i></td> 
                     <td>
-					    <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+					    <button class="btn btn-primary" onclick="printAllEdits()" >مشاهدة</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#editFileModal">تعديل</button>
 						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
                          <button class="btn btn-danger">أرشفة</button>
@@ -299,7 +303,7 @@
                     <td>28</td>
                     <td><i class="fa-solid fa-circle-play fa-rotate-180 fa-2xl"></i></td>
                     <td>
-					 <button class="btn btn-primary" data-toggle="modal" data-target="#viewFileModal">مشاهدة</button>
+					 <button class="btn btn-primary" onclick="printAllEdits()" >مشاهدة</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#editFileModal">تعديل</button>
 						 <button class="btn btn-primary" data-toggle="modal" data-target="#ediFileModal">إضافة</button>	
                          <button class="btn btn-danger">أرشفة</button>
@@ -335,61 +339,58 @@
                     </div>
                     <div class="modal-body">
                         <form>
+						 <button type="submit" class="btn btn-primary">حفظ الملف</button>
                             <div class="form-group" style="display:none">
                                 <label for="file_number" >رقم الملف/الإصدار: 123</label>
                                 <input type="readonly" class="form-control" id="file_number" name="file_number"  >
                             </div>
-                            <div class="form-group">
-                                <label for="to_user">إلى:</label>
-                                <input type="text" class="form-control" id="to_user" name="to_user" required>
-								<div id="to_user_complete" class="autocomplete-items"></div>	
-                            </div>
-                            <div class="form-group">
-                                <label for="main_category">التصنيف الرئيسي: <span>(<input type="checkbox"  > تذكر التصنيف  ) </span></label>
-                                <input type="text" class="form-control" id="main_category" name="main_category" required>
-								<div id="main_category_complete" class="autocomplete-items"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="sub_category">التصنيف الفرعي: <span>(<input type="checkbox"  > تذكر التصنيف  ) </span></label>
-                                <input type="text" class="form-control" id="sub_category" name="sub_category" required>
-								<div id="sub_category_complete" class="autocomplete-items"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">الموضوع: <span>(<input type="checkbox"  > تذكر الموضوع ) </span> </label>
-								<input type="text" class="form-control" id="subject" name="subject" required>
-                                
-                            </div>
+                           <div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="to_user">إلى:</label>
+									<input type="text" class="form-control" id="to_user" name="to_user" required>
+									<div id="to_user_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="main_category">التصنيف الرئيسي: <span>(<input type="checkbox"> تذكر التصنيف)</span></label>
+									<input type="text" class="form-control" id="main_category" name="main_category" required>
+									<div id="main_category_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="sub_category">التصنيف الفرعي: <span>(<input type="checkbox"> تذكر التصنيف)</span></label>
+									<input type="text" class="form-control" id="sub_category" name="sub_category" required>
+									<div id="sub_category_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="subject">الموضوع: <span>(<input type="checkbox"> تذكر الموضوع)</span></label>
+									<input type="text" class="form-control" id="subject" name="subject" required>
+								</div>
+							</div>
 							
+							<div class="col-md-1">	
                             <div class="form-group" style="display:none">
                                 <label for="creation_date">تاريخ الإنشاء:</label>
 								<input type="date" class="form-control" id="creation_date" name="creation_date" >
                             </div>
+							
                             <div class="form-group">
                                 <label for="days_until_deadline">عدد الأيام الأقصى:</label>
                                 <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" required>
                             </div>
-							
+						</div>	
+						<div class="col-md-11">	
 							 <div class="form-group">
                                 <label for="days_until_deadline">نص</label>
-                                <textarea class="form-control" id="setText" name="addText" rows="4" required></textarea>
+                                <textarea class="form-control" id="setText" name="addText"  required></textarea>
                             </div>
-							
-							 <div class="form-group">
-                                <label for="Attached">مرفق:</label>
-                                <input type="file" class="form-control" id="attachment" name="attachment" >
-                            </div>
-							
-							
-                            <div class="form-group" style="display:none">
-                                <label for="status">الحالة:</label>
-                                <select class="form-control" id="status" name="status" >
-                                    <option value="active">نشط</option>
-                                    <option value="completed">مكتمل</option>
-                                    <option value="archived">مؤرشف</option>
-                                    <option value="suspended">معلق</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">حفظ الملف</button>
+						</div>	
+						</div>
 							
 							
                         </form>
@@ -397,74 +398,76 @@
                 </div>
             </div>
         </div>
-		
 		<!-- Modal for editing files -->
-        <div class="modal fade" id="editFileModal" tabindex="-1" role="dialog" aria-labelledby="editFileModalLabel" aria-hidden="true">
+		<div class="modal fade" id="editFileModal" tabindex="-1" role="dialog" aria-labelledby="editFileModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editFileModalLabel">تعديل ملف</h5>
+                        <h5 class="modal-title" id="editFileModalLabel">ملف جديد</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <form>
+						 <button type="submit" class="btn btn-primary">حفظ الملف</button>
                             <div class="form-group" style="display:none">
                                 <label for="file_number" >رقم الملف/الإصدار: 123</label>
-                                <input type="readonly" class="form-control" id="edit_file_number" name="file_number" value="126" >
+                                <input type="readonly" class="form-control" id="file_number" name="file_number"  >
                             </div>
-                            <div class="form-group">
-                                <label for="to_user">إلى:</label>
-                                <input type="text" class="form-control" id="edit_to_user" name="to_user" value="سامي علي" required>
-								<div id="to_user_complete" class="autocomplete-items"></div>	
-                            </div>
-                            <div class="form-group">
-                                <label for="main_category">التصنيف الرئيسي:</label>
-                                <input type="text" class="form-control" id="edit_main_category" name="main_category" value="مشتريات" required>
-								<div id="main_category_complete" class="autocomplete-items"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="sub_category">التصنيف الفرعي:</label>
-                                <input type="text" class="form-control" id="edit_sub_category" name="sub_category" value="لحوم" required>
-								<div id="sub_category_complete" class="autocomplete-items"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">الموضوع:</label>
-								<input type="text" class="form-control" id="edit_subject" name="subject" value="شراء لحوم من نجران" required>
-                                
-                            </div>
+                           <div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="to_user">إلى:</label>
+									<input type="text" class="form-control" id="to_user" name="to_user" value="سامي علي"  required>
+									<div id="to_user_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="main_category">التصنيف الرئيسي: </label>
+									<input type="text" class="form-control" id="main_category" name="main_category" value="مشتريات" required>
+									<div id="main_category_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="sub_category">التصنيف الفرعي: </label>
+									<input type="text" class="form-control" id="sub_category" name="sub_category" value="لحوم" required>
+									<div id="sub_category_complete" class="autocomplete-items"></div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="subject">الموضوع: </label>
+									<input type="text" class="form-control" id="subject" name="subject" value="شراء لحوم من نجران" required>
+								</div>
+							</div>
 							
+							<div class="col-md-1">	
                             <div class="form-group" style="display:none">
                                 <label for="creation_date">تاريخ الإنشاء:</label>
-								<input type="date" class="form-control" id="edit_creation_date" value="" name="creation_date" >
+								<input type="date" class="form-control" id="creation_date" name="creation_date" >
                             </div>
+							
                             <div class="form-group">
                                 <label for="days_until_deadline">عدد الأيام الأقصى:</label>
-                                <input type="number" class="form-control" id="edit_days_until_deadline" value="" name="days_until_deadline" required>
+                                <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" value="4" required>
                             </div>
-							
+						</div>	
+						<div class="col-md-11">	
 							 <div class="form-group">
                                 <label for="days_until_deadline">نص</label>
-                                <textarea class="form-control" id="edit_setText" name="editText" rows="4" value="" required></textarea>
+                                <textarea class="form-control" id="edit_setText" name="editText" rows="30" required>
+								شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم 
+								شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم 
+								شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم 
+								شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم 
+								
+								</textarea>
                             </div>
-							
-							 <div class="form-group">
-                                <label for="Attached">مرفق:</label>
-                                <input type="file" class="form-control" id="attachment" name="attachment" >
-                            </div>
-							
-							
-                            <div class="form-group" style="display:none">
-                                <label for="status">الحالة:</label>
-                                <select class="form-control" id="status" name="status" >
-                                    <option value="active">نشط</option>
-                                    <option value="completed">مكتمل</option>
-                                    <option value="archived">مؤرشف</option>
-                                    <option value="suspended">معلق</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">حفظ الملف</button>
+						</div>	
+						</div>
 							
 							
                         </form>
@@ -518,27 +521,39 @@
                     </div>
                     <div class="modal-body">
                         <form>
+						 <button type="submit" class="btn btn-primary">حفظ الإضافة</button>
                             <p><strong>رقم الملف:</strong> 123/2</p>
 							<p><strong>إلى:</strong> <span id="view_to_user">سامي علي</span></p>
 							<p><strong>التصنيف الرئيسي:</strong> <span id="view_main_category">مشتريات</span></p>
 							<p><strong>التصنيف الفرعي:</strong> <span id="view_sub_category">لحوم</span></p>
 							<p><strong>الموضوع:</strong><span id="view_subject">شراء لحوم من نجران</span></p>
-							
-							
-							<div class="form-group">
-                                <label for="days_until_deadline">إضافة</label>
-                                <textarea class="form-control" id="addText" name="addText" rows="4" required></textarea>
+							<div class="row" >
+								<div class="col-md-2">	
+                            <div class="form-group" style="display:none">
+                                <label for="creation_date">تاريخ الإنشاء:</label>
+								<input type="date" class="form-control" id="creation_date" name="creation_date" >
                             </div>
+							
                             <div class="form-group">
-                                <label for="days_until_deadline">عدد الأيام الأقصى:</label> 
-                                <input type="number" class="form-control" id="edit_days_until_deadline" value="" name="days_until_deadline" required>
+                                <label for="days_until_deadline">عدد الأيام الأقصى:</label>
+                                <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" required>
                             </div>
+						</div>	
+						<div class="col-md-10">	
+							 <div class="form-group">
+                                <label for="days_until_deadline">نص</label>
+                                <textarea class="form-control" id="addText" name="addText" rows="50" required></textarea>
+                            </div>
+						</div>	
+						</div>
+							
+							
 							
 							<!---<div class="form-group">
                                 <label for="Attached">مرفق:</label>
                                 <input type="file" class="form-control" id="add-attachment" name="add-attachment" >
                             </div> -->
-                            <button type="submit" class="btn btn-primary">حفظ الإضافة</button>
+                           
                         </form>
                     </div>
                 </div>
@@ -617,7 +632,7 @@
     }
 
     // Print-related functions
-    window.printFile = function() { window.open("print.html#2"); };
+    window.printFile = function(index) { window.open("print.html#sub-" +index ); };
     window.printAllEdits = function() { window.open("print.html"); };
 
     // Button click for submit

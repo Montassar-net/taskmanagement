@@ -29,11 +29,14 @@
             border-bottom: 2px solid #efc652;
             padding-bottom: 5px;
         }
-        @media print {
-            body {
-                margin: 0;
-            }
+		
+		 .btn-primary {
+            background-color: #efc652;
+            border-color: #efc652;
+            color: #891b1e;
+			
         }
+       
 		
 		div{
 			padding: 4px;
@@ -42,16 +45,26 @@
 		.receipt-line {
             border-bottom: 1px dashed #000;
             display: inline-block;
-            width: 300px; /* Adjust width based on preference */
+            width: 340px; /* Adjust width based on preference */
             text-align: center; /* Center the text in the line */
         }
 		
 
 		.section {
-			page-break-after: avoid;
+			  break-inside: avoid;
 		}
 		
+			#sign {
+			display: none;
+		  }
 		@media print {
+			body {
+                margin: 0;
+            }
+			
+			#sign {
+			display: block;
+		  }
 		  .print-button {
 			display: none;
 		  }
@@ -59,18 +72,24 @@
 		  #attachment_link{
 		  display: none;
 		  }
+		  
+		  .hide-on-print {
+		  display: none;
+		  }
+		  
+		  
 		}
     </style>
 </head>
 <body>
     <div class="container mt-5 mb-5">
         <header class="text-center">
-            <h1>تفاصيل الملف</h1>
-          <button class="print-button btn btn-primary" onclick="window.print()">طباعة</button>
+            <h1>الملف رقم 123</h1>
+          <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         </header>
 
         <div id="sub-0" class="section">
-            <div class="section-header">الملف رقم 123</div>
+            <div class="section-header"></div>
             <div class="row">
      
 				<div class="col-md-4"><strong>من:</strong> أحمد محمد</div>
@@ -78,18 +97,24 @@
                 <div class="col-md-4"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
                 <div class="col-md-4"><strong>التصنيف الفرعي:</strong> لحوم</div>
                 <div class="col-md-4"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
-                <div class="col-md-4" id="attachment_link" ><strong>المرفق:</strong> <a href="#" >مشاهدة المرفق</a></div>
+                
             </div>
         </div>
 
         <div id="sub-1" class="section">
-			<div class="section-header"> رقم (123 / 1)</div>
+			<div class="section-header"> رقم (123 / 1) 
+			<button class="print-button btn btn-primary" onclick="printTag('sub-1')">طباعة</button>
+			<button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button></div>
             <div class="row">
    
                
 				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-10-12</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div> 
+				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div>
+				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div>
+				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div>
 				 <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن </div>
                 
             </div>
@@ -97,7 +122,10 @@
 		
 		
 		<div id="sub-2" class="section">
-			<div class="section-header">إضافة رقم (123 / 2) </div>
+			<div class="section-header" >إضافة رقم (123 / 2) 
+			<button class="print-button btn btn-primary" onclick="printTag('sub-2')">طباعة</button>
+			<button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
+			</div>
             <div class="row">
    
                 
@@ -105,12 +133,20 @@
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-02</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
 				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
+				<div class="col-md-12">شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران شراء لحوم من نجران</div>
                 
             </div>
         </div>
 		
 		<div id="sub-3" class="section">
-			<div class="section-header">إضافة رقم (123 / 3)</div>
+			<div class="section-header">إضافة رقم (123 / 3) 
+			<button class="print-button btn btn-primary" onclick="printTag('sub-3')">طباعة</button>
+			<button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
+			</div>
             <div class="row">
    
                 
@@ -118,11 +154,38 @@
 				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
                 <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
 				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
                 
             </div>
         </div>
 		
-		<div id="sign" class="section" style="display:none;" >
+		
+		<div id="sub-4" class="section">
+			<div class="section-header">إضافة رقم (123 / 4) 
+			<button class="print-button btn btn-primary" onclick="printTag('sub-4')">طباعة</button>
+			<button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
+			</div>
+            <div class="row">
+   
+                
+				<div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
+				<div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
+                <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+				<div class="col-md-12"> شراء لحوم من القصيم شراء لحوم من القصيم شراء لحوم من القصيم </div>
+                
+            </div>
+        </div>
+		
+		<div id="sign" class="section"  >
             <div class="section-header">استلام الخطاب</div>
 			<br>
             <p>أنا / <span class="receipt-line"></span> استملت صورة من الخطاب <span class="receipt-line"></span></p>
@@ -130,26 +193,35 @@
     </div>
 
     <script>
-        // Automatically open the print dialog when the page loads
-        window.onload = function() {
-            //window.print();
+		
+		
+		function printAll() {
+		
+		var sections = document.getElementsByClassName('section');
+
+		for (var i = 0; i < sections.length; i ++) {
+		sections[i].classList.remove('hide-on-print');
+	
+		}
+		document.getElementById("sign").style.display = 'none';
+			window.print();
+		}
+		
+		function printTag(tag) {
+		
+		var sections = document.getElementsByClassName('section');
+
+		for (var i = 0; i < sections.length; i ++) {
 			
-			var url = window.location.href,
-			hash = url.split('#')[1];
-
-				if (hash) {
-					var sections = document.getElementsByClassName('section');
-
-					for (var i = 0; i < sections.length; i ++) {
-						sections[i].style.display = 'none';
-					}
-					  document.getElementById("sign").style.display = 'block';
-					  document.getElementById("sub-0").style.display = 'block';
-					  document.getElementById("sub-"+hash).style.display = 'block';
-				} else {
-					// do something else
-				}
-        };
+			if(sections[i].id !== tag &&  "sub-0" != sections[i].id)
+			sections[i].classList.add('hide-on-print');
+			else
+			sections[i].classList.remove('hide-on-print');
+		}
+		
+		document.getElementById("sign").style.display = 'block';
+			window.print();
+		}
     </script>
 </body>
 </html>
