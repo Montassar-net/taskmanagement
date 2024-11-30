@@ -574,10 +574,12 @@
 	document.addEventListener('DOMContentLoaded', function() {
     // Initialize ClassicEditor for specific elements with Arabic support
     ClassicEditor.create(document.querySelector('#setText'), {
+	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
         language: { ui: 'ar', content: 'ar' }
     }).catch(error => console.error(error));
 
     ClassicEditor.create(document.querySelector('#addText'), {
+	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
         language: { ui: 'ar', content: 'ar' }
     }).catch(error => console.error(error)); 
 

@@ -60,6 +60,10 @@
     #sign {
       display: none;
     }
+	
+	.ck.ck-editor{
+		width:100% !important;
+	}
 
     @media print {
       body {
@@ -249,7 +253,7 @@
       </div>
       <div class="row">
 
-        <textarea class="form-control " name="editText" required></textarea>
+        <textarea class="form-control col-md-12" name="editText" required></textarea>
       </div>
     </div>
 
@@ -264,12 +268,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
     
-    /*const textareas= document.getElementsByTagName("textarea");
-    for (var i = 0; i < textareas.length; i ++) {
+		const textareas= document.getElementsByTagName("textarea");
+		for (var i = 0; i < textareas.length; i ++) {
     			ClassicEditor.create(textareas[i], {
+				toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
     			language: { ui: 'ar', content: 'ar' }
     		}).catch(error => console.error(error));
-    		}*/
+    		}
     });
     
     	
