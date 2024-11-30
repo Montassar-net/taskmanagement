@@ -349,6 +349,13 @@
     	prows[i].style.display = 'flex';
     
     	}
+		
+		var prows  = document.getElementsByClassName('hide-on-print');
+    	
+    	for (var i = 0; i < prows.length; i ++) {
+    	prows[i].style.display = 'none';
+    
+    	}
     	
     	var sections = document.getElementsByClassName('section');
     
