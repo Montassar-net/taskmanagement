@@ -28,10 +28,10 @@
 
     .section-header {
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-top: 10px;
       color: #efc652;
-      border-bottom: 2px solid #efc652;
-      padding-bottom: 5px;
+      border-top: 2px solid #efc652;
+      padding-top: 5px;
     }
 
     .btn-primary {
@@ -102,7 +102,7 @@
     <header class="text-center">
       <h1>الملف رقم 123</h1>
       <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-
+	<a class="print-button btn btn-primary"  href="index.html">الرئيسية</a>
     </header>
 
     <div id="sub-0" class="section">
@@ -119,17 +119,17 @@
     </div>
 
     <div id="sub-1" class="section">
-      <div class="section-header"> رقم (123 / 1)
+      <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-1')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary hide-on-print" onclick="initEdit(this,1)">تعديل</button>
       </div>
       <div class="row printable">
-
-
-        <div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
-        <div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-10-12</div>
-        <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+		<div class="col-md-2"><strong>رقم (123 / 1)</strong></div>
+		<div class="col-md-2"><strong>تاريخ البداية:</strong> 2024-10-12</div>
+        <div class="col-md-2"><strong>مدة المهمة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+	   
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -152,15 +152,19 @@
 
 
     <div id="sub-2" class="section">
-      <div class="section-header">إضافة رقم (123 / 2)
+      <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-2')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary hide-on-print" onclick="initEdit(this,2)">تعديل</button>
       </div>
       <div class="row printable">
-        <div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
-        <div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-02</div>
-        <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+		<div class="col-md-2"><strong>إضافة رقم (123 / 2)</strong></div>
+        <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
+        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+		
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -181,16 +185,18 @@
     </div>
 
     <div id="sub-3" class="section">
-      <div class="section-header">إضافة رقم (123 / 3)
+      <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-3')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary hide-on-print" onclick="initEdit(this,3)">تعديل</button>
       </div>
       <div class="row printable">
-
-        <div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
-        <div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
-        <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+		<div class="col-md-2"><strong>إضافة رقم (123 / 3)</strong></div>
+         <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
+        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -212,17 +218,19 @@
 
 
     <div id="sub-4" class="section">
-      <div class="section-header">إضافة رقم (123 / 4)
+      <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-4')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary hide-on-print" onclick="initEdit(this,4)">تعديل</button>
       </div>
       <div class="row printable">
 
-
-        <div class="col-md-4"><strong>عداد اليوم</strong> 4 </div>
-        <div class="col-md-4"><strong>تاريخ الإنشاء:</strong> 2024-11-10</div>
-        <div class="col-md-4"><strong>عدد الأيام الأقصى:</strong> 5</div>
+		<div class="col-md-2"><strong>إضافة رقم (123 / 4)</strong></div>
+         <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
+        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -244,10 +252,12 @@
 
     <div class=" hide-on-print">
       <div class="section-header">إضافة
-        <button class="btn btn-primary " onclick="">حفظ</button>
+       
       </div>
+
       <br>
       <div class="form-group">
+	  <label for="days_until_deadline">اليوم : <span id="today" ></span></label><br>
         <label for="days_until_deadline">عدد الأيام الأقصى:</label>
         <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" value="4" required>
       </div>
@@ -255,6 +265,7 @@
 
         <textarea class="form-control col-md-12" name="editText" required></textarea>
       </div>
+	   <button class="btn btn-primary " onclick="">حفظ</button>
     </div>
 
     <div id="sign" class="section" style="">
@@ -267,7 +278,17 @@
   <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+	
+	const date = new Date();
+
+		let day = date.getDate();
+		let month = date.getMonth() + 1;
+		let year = date.getFullYear();
+
+		// This arrangement can be altered based on how we want the date's format to appear.
+		let currentDate = `${day}-${month}-${year}`;
     
+		document.getElementById('today').innerText = currentDate;
 		const textareas= document.getElementsByTagName("textarea");
 		for (var i = 0; i < textareas.length; i ++) {
     			ClassicEditor.create(textareas[i], {

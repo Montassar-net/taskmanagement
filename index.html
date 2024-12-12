@@ -344,7 +344,12 @@
                                 <label for="file_number" >رقم الملف/الإصدار: 123</label>
                                 <input type="readonly" class="form-control" id="file_number" name="file_number"  >
                             </div>
+							<div class="form-group" style="">
+                                <label for="creation_date">تاريخ الإنشاء:</label>
+								<input type="date" class="form-control" id="creation_date" name="creation_date" >
+                            </div>
                            <div class="row">
+						   
 							<div class="col-md-3">
 								<div class="form-group">
 									<label for="to_user">إلى:</label>
@@ -374,10 +379,7 @@
 							</div>
 							
 							<div class="col-md-1">	
-                            <div class="form-group" style="display:none">
-                                <label for="creation_date">تاريخ الإنشاء:</label>
-								<input type="date" class="form-control" id="creation_date" name="creation_date" >
-                            </div>
+                            
 							
                             <div class="form-group">
                                 <label for="days_until_deadline">عدد الأيام الأقصى:</label>
@@ -574,12 +576,30 @@
 	document.addEventListener('DOMContentLoaded', function() {
     // Initialize ClassicEditor for specific elements with Arabic support
     ClassicEditor.create(document.querySelector('#setText'), {
-	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
+	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'], fontFamily: {
+            options: [
+                'default',
+                'Arial, Helvetica, sans-serif',
+                'Cairo, sans-serif', // Add your Arabic font here
+                'Georgia, serif',
+                'Courier New, Courier, monospace',
+                'Tahoma, Geneva, sans-serif'
+            ],
+            supportAllValues: true },
         language: { ui: 'ar', content: 'ar' }
     }).catch(error => console.error(error));
 
     ClassicEditor.create(document.querySelector('#addText'), {
-	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
+	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'], fontFamily: {
+            options: [
+                'default',
+                'Arial, Helvetica, sans-serif',
+                'Cairo, sans-serif', // Add your Arabic font here
+                'Georgia, serif',
+                'Courier New, Courier, monospace',
+                'Tahoma, Geneva, sans-serif'
+            ],
+            supportAllValues: true },
         language: { ui: 'ar', content: 'ar' }
     }).catch(error => console.error(error)); 
 
