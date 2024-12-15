@@ -150,6 +150,24 @@
 		label span {
 			color:#999;
 		}
+		
+		@media print {
+		  body * {
+			visibility: hidden;
+		  }
+
+		  #listTable, #listTable * , h2 {
+		  visibility: visible;
+			page-break-inside: avoid;
+		  }
+		  
+		 th:nth-last-child(2), td:nth-last-child(2),
+    th:last-child, td:last-child {
+      display: none;
+    }
+    }
+	
+	
     </style>
 </head>
 <body>
@@ -170,7 +188,7 @@
 	
 			
 
-    <div class="container mt-4">
+    <div class="container mt-4" id="mainContainer" >
         <h2>قائمة الملفات</h2>
 		
 		<div class="input-group mb-3">
@@ -179,7 +197,10 @@
 		</div>
 		
         <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addFileModal">إضافة ملف جديد</button>
-        <table class="table table-bordered mt-3">
+		
+		<button class="btn btn-primary mb-3" onclick="printAll();" >طباعة</button>
+		
+        <table id="listTable" class="table table-bordered mt-3">
             <thead>
                 <tr >
 					<th>تاريخ الإضافة</th>
@@ -674,6 +695,12 @@
         });
     });
 });
+
+
+ function printAll() {
+      window.print();
+
+    }
 </script>
 </body>
 </html>

@@ -15,6 +15,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #000;
+	      font-size: 1.2rem;
     }
 
     h1,
@@ -48,9 +49,7 @@
       border-bottom: 1px dashed #000;
       display: inline-block;
       width: 340px;
-      /* Adjust width based on preference */
       text-align: center;
-      /* Center the text in the line */
     }
 
     .section {
@@ -60,10 +59,18 @@
     #sign {
       display: none;
     }
+
+    .ck.ck-editor {
+      width: 100% !important;
+    }
 	
-	.ck.ck-editor{
-		width:100% !important;
-	}
+
+
+.page-number {
+  position: fixed;
+  bottom: 1cm;
+  right: 20cm;
+}
 
     @media print {
       body {
@@ -101,34 +108,36 @@
   <div class="container mt-5 mb-5">
     <header class="text-center">
       <h1>الملف رقم 123</h1>
+      <button class="btn btn-primary print-button" data-toggle="modal" data-target="#editFileModal">إضافة</button>
       <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-	<a class="print-button btn btn-primary"  href="index.html">الرئيسية</a>
+      <a class="print-button btn btn-primary" href="index.html">الرئيسية</a>
     </header>
 
     <div id="sub-0" class="section">
       <div class="section-header"></div>
       <div class="row">
-
         <div class="col-md-4"><strong>من:</strong> أحمد محمد</div>
         <div class="col-md-4"><strong>إلى:</strong> سامي علي</div>
         <div class="col-md-4"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
         <div class="col-md-4"><strong>التصنيف الفرعي:</strong> لحوم</div>
         <div class="col-md-4"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
-
       </div>
     </div>
+
+   
 
     <div id="sub-1" class="section">
       <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-1')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-        <button class="btn btn-primary hide-on-print" onclick="initEdit(this,1)">تعديل</button>
+        <button class="btn btn-primary print-button" onclick="initEdit(this,1)">تعديل</button>
       </div>
       <div class="row printable">
-		<div class="col-md-2"><strong>رقم (123 / 1)</strong></div>
-		<div class="col-md-3"><strong>تاريخ البداية:</strong> 2024-10-12</div>
-        <div class="col-md-2"><strong>مدة المهمة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+		<div class="col-md-12"><strong>رقم (123 / 1)</strong></div>
+		<div class="col-md-12"><strong>تاريخ البداية:</strong> 2024-10-12</div>
+		<div class="col-md-12"><strong>اليوم:</strong> الثلاثاء </div>
+        <div class="col-md-12"><strong>مدة المهمة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من البداية:</strong> 5</div>
 	   
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -155,15 +164,15 @@
       <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-2')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-        <button class="btn btn-primary hide-on-print" onclick="initEdit(this,2)">تعديل</button>
+        <button class="btn btn-primary print-button" onclick="initEdit(this,2)">تعديل</button>
       </div>
       <div class="row printable">
-		<div class="col-md-2"><strong>إضافة رقم (123 / 2)</strong></div>
-        <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
-        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
-        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+		<div class="col-md-12"><strong>إضافة رقم (123 / 2)</strong></div>
+        <div class="col-md-12"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-12"><strong>اليوم:</strong> إثنين </div>
+        <div class="col-md-12"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من البداية:</strong> 5</div>
 		
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -188,15 +197,15 @@
       <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-3')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-        <button class="btn btn-primary hide-on-print" onclick="initEdit(this,3)">تعديل</button>
+        <button class="btn btn-primary print-button" onclick="initEdit(this,3)">تعديل</button>
       </div>
       <div class="row printable">
-		<div class="col-md-2"><strong>إضافة رقم (123 / 3)</strong></div>
-         <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
-        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
-        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+		<div class="col-md-12"><strong>إضافة رقم (123 / 3)</strong></div>
+         <div class="col-md-12"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-12"><strong>اليوم:</strong> إربعاء </div>
+        <div class="col-md-12"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من البداية:</strong> 5</div>
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -221,16 +230,16 @@
       <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-4')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-        <button class="btn btn-primary hide-on-print" onclick="initEdit(this,4)">تعديل</button>
+        <button class="btn btn-primary print-button" onclick="initEdit(this,4)">تعديل</button>
       </div>
       <div class="row printable">
 
-		<div class="col-md-2"><strong>إضافة رقم (123 / 4)</strong></div>
-         <div class="col-md-3"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
-        <div class="col-md-1"><strong>اليوم:</strong> 4 </div>
-        <div class="col-md-2"><strong>مدة الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من الإضافة:</strong> 5</div>
-		<div class="col-md-2"><strong>عدد أيام من البداية:</strong> 5</div>
+		<div class="col-md-12"><strong>إضافة رقم (123 / 4)</strong></div>
+         <div class="col-md-12"><strong>تاريخ الإضافة:</strong> 2024-10-12</div>
+        <div class="col-md-12"><strong>اليوم:</strong> السبت  </div>
+        <div class="col-md-12"><strong>مدة الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من الإضافة:</strong> 5</div>
+		<div class="col-md-12"><strong>عدد أيام من البداية:</strong> 5</div>
         <div class="col-md-12"> شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
           شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن شراء لحوم من حفر الباطن
@@ -250,23 +259,6 @@
       </div>
     </div>
 
-    <div class=" hide-on-print">
-      <div class="section-header">إضافة
-       
-      </div>
-
-      <br>
-      <div class="form-group">
-	  <label for="days_until_deadline">اليوم : <span id="today" ></span></label><br>
-        <label for="days_until_deadline">عدد الأيام الأقصى:</label>
-        <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" value="4" required>
-      </div>
-      <div class="row">
-
-        <textarea class="form-control col-md-12" name="editText" required></textarea>
-      </div>
-	   <button class="btn btn-primary " onclick="">حفظ</button>
-    </div>
 
     <div id="sign" class="section" style="">
       <div class="section-header">استلام الخطاب</div>
@@ -274,130 +266,149 @@
       <p>أنا / <span class="receipt-line"></span> استملت صورة من الخطاب <span class="receipt-line"></span></p>
     </div>
   </div>
+  
+  
+  <!-- Modal for adding/editing files -->
+ <div class="modal fade" id="editFileModal" tabindex="-1" role="dialog" aria-labelledby="editFileModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editFileModalLabel">إضافة على ملف</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+        <div class="modal-body">
+          <form>
+           
 
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group" style="">
+                  <strong>تاريخ الإضافة:</strong> <span id="today" >2024-10-12</span>
+                </div>
+				</div>
+				<div class="col-md-5">
+     
+                  <input type="number" class="form-control" id="days_until_deadline" name="days_until_deadline" placeholder="عدد الأيام الأقصى" required>
+                
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="addText">نص</label>
+                  <textarea class="form-control" id="addText" name="addText" rows="10" required></textarea>
+                </div>
+              </div>
+			   <button type="submit" class="btn btn-primary">حفظ الإضافة</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let currentDate = `${day}-${month}-${year}`;
+      document.getElementById('today').innerText = currentDate;
+
+      const textareas = document.getElementsByTagName("textarea");
+      for (let i = 0; i < textareas.length; i++) {
+        ClassicEditor.create(textareas[i], {
+          toolbar: ['bold', 'italic', 'table', 'undo', 'redo', 'numberedList', 'bulletedList', 'Heading'],
+          language: { ui: 'ar', content: 'ar' }
+        }).catch(error => console.error(error));
+      }
+	  
+	  
 	
-	const date = new Date();
-
-		let day = date.getDate();
-		let month = date.getMonth() + 1;
-		let year = date.getFullYear();
-
-		// This arrangement can be altered based on how we want the date's format to appear.
-		let currentDate = `${day}-${month}-${year}`;
-    
-		document.getElementById('today').innerText = currentDate;
-		const textareas= document.getElementsByTagName("textarea");
-		for (var i = 0; i < textareas.length; i ++) {
-    			ClassicEditor.create(textareas[i], {
-				toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'],
-    			language: { ui: 'ar', content: 'ar' }
-    		}).catch(error => console.error(error));
-    		}
+	
     });
-    
-    	
-    
-    
-    	function initEdit(element,index){
-    	if(element.innerText === 'حفظ')
-    	return saveEdit(element,index);
-    	else
-    	return startEdit(element,index);
-    	}
-    	
-    	
-    	function startEdit(element,index){
-    
-    	 element.innerText = 'حفظ';
-    		
-    	  const section = element.parentElement.parentElement;
-    	  const id = section.id;
-    			
-    	  const firstRow = section.querySelector('div:nth-child(2)');
-    	  const secondRow = section.querySelector('#'+id+' > div:nth-child(3)');
-    
-    	  firstRow.style.display = 'none';
-    	  secondRow.style.display = 'flex';
-    	}
-    
-    	function saveEdit(element,index){
-    	element.innerText = 'تعديل';
-    	
-    	  const section = element.parentElement.parentElement;
-    	  const id = section.id;
-    			
-    	  const firstRow = section.querySelector('div:nth-child(2)');
-    	  const secondRow = section.querySelector('#'+id+' > div:nth-child(3)');
-    
-    	  firstRow.style.display = 'flex';
-    	  secondRow.style.display = 'none';
-    	  
-    	}
-    	
-    	function printAll() {
-    	
-    	var prows  = document.getElementsByClassName('printable');
-    	
-    	for (var i = 0; i < prows.length; i ++) {
-    	prows[i].style.display = 'flex';
-    
-    	}
-    	
-    	var prows  = document.getElementsByClassName('hide-on-print');
-    	
-    	for (var i = 0; i < prows.length; i ++) {
-    	prows[i].style.display = 'none';
-    
-    	}
-    	
-    	var sections = document.getElementsByClassName('section');
-    
-    	for (var i = 0; i < sections.length; i ++) {
-    	sections[i].classList.remove('hide-on-print');
-    
-    	}
-    	
-    	
-    	
-    	
-    	document.getElementById("sign").style.display = 'none';
-    		window.print();
-    	}
-    	
-    	function printTag(tag) {
-    	
-    	var prows  = document.getElementsByClassName('printable');
-    	
-    	for (var i = 0; i < prows.length; i ++) {
-    	prows[i].style.display = 'flex';
-    
-    	}
-		
-		var prows  = document.getElementsByClassName('hide-on-print');
-    	
-    	for (var i = 0; i < prows.length; i ++) {
-    	prows[i].style.display = 'none';
-    
-    	}
-    	
-    	var sections = document.getElementsByClassName('section');
-    
-    	for (var i = 0; i < sections.length; i ++) {
-    		
-    		if(sections[i].id !== tag &&  "sub-0" != sections[i].id)
-    		sections[i].classList.add('hide-on-print');
-    		else
-    		sections[i].classList.remove('hide-on-print');
-    	}
-    	
-    	document.getElementById("sign").style.display = 'block';
-    		window.print();
-    	}
-    	
-    	
+
+    function initEdit(element, index) {
+      if (element.innerText === 'حفظ') return saveEdit(element, index);
+      else return startEdit(element, index);
+    }
+
+    function startEdit(element, index) {
+      element.innerText = 'حفظ';
+      const section = element.parentElement.parentElement;
+      const id = section.id;
+      const firstRow = section.querySelector('div:nth-child(2)');
+      const secondRow = section.querySelector('#' + id + ' > div:nth-child(3)');
+      firstRow.style.display = 'none';
+      secondRow.style.display = 'block';
+    }
+
+    function saveEdit(element, index) {
+      element.innerText = 'تعديل';
+	  const section = element.parentElement.parentElement;
+      const id = section.id;
+      const firstRow = section.querySelector('div:nth-child(2)');
+      const secondRow = section.querySelector('#' + id + ' > div:nth-child(3)');
+      firstRow.style.display = 'block';
+      secondRow.style.display = 'none';
+    }
+
+    function printAll() {
+      const prows = document.getElementsByClassName('printable');
+      for (let i = 0; i < prows.length; i++) {
+        prows[i].style.display = 'block';
+      }
+
+      const nonPrintable = document.getElementsByClassName('hide-on-print');
+      for (let i = 0; i < nonPrintable.length; i++) {
+       /// nonPrintable[i].style.display = 'none';
+      }
+
+      const sections = document.getElementsByClassName('section');
+      for (let i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('hide-on-print');
+		///sections[i].style.display = 'block';
+      }
+
+      document.getElementById("sign").style.display = 'none';
+      window.print();
+
+    }
+
+    function printTag(tag) {
+      const prows = document.getElementsByClassName('printable');
+      for (let i = 0; i < prows.length; i++) {
+      ///  prows[i].style.display = 'block';
+		prows[i].classList.remove('hide-on-print');
+      }
+
+      const nonPrintable = document.getElementsByClassName('hide-on-print');
+      for (let i = 0; i < nonPrintable.length; i++) {
+       /// nonPrintable[i].style.display = 'none';
+      }
+
+      const sections = document.getElementsByClassName('section');
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].id !== tag && "sub-0" != sections[i].id) {
+          sections[i].classList.add('hide-on-print');
+        } else {
+          sections[i].classList.remove('hide-on-print');
+        }
+      }
+
+      document.getElementById("sign").style.display = 'block';
+      window.print();
+	  
+	  
+	  
+	  
+    }
   </script>
 </body>
 
