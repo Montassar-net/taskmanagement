@@ -675,8 +675,8 @@
     }
 
     // Print-related functions
-    window.printFile = function(index) { window.open("print.html#sub-" +index ); };
-    window.printAllEdits = function() { window.open("print.html"); };
+    window.printFile = function(index) { location.href = "print.html#sub-" +index ;  /*window.open("print.html#sub-" +index );*/  };
+    window.printAllEdits = function() { location.href = "print.html"; /*window.open("print.html"); */ };
 
     // Button click for submit
     document.querySelectorAll('button[type="submit"]').forEach(button => {
