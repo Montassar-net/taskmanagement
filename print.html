@@ -108,19 +108,21 @@
   <div class="container mt-5 mb-5">
     <header class="text-center">
       <h1>الملف رقم 123</h1>
+	  <a class="print-button btn btn-primary" href="index.html">الرئيسية</a>
       <button class="btn btn-primary print-button" data-toggle="modal" data-target="#editFileModal">إضافة</button>
       <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-      <a class="print-button btn btn-primary" href="index.html">الرئيسية</a>
+      
+	   <button class="print-button btn btn-danger" onclick="alert('أرشفة');">أرشفة</button>
     </header>
 
     <div id="sub-0" class="section">
       <div class="section-header"></div>
       <div class="row">
-        <div class="col-md-4"><strong>من:</strong> أحمد محمد</div>
-        <div class="col-md-4"><strong>إلى:</strong> سامي علي</div>
-        <div class="col-md-4"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
-        <div class="col-md-4"><strong>التصنيف الفرعي:</strong> لحوم</div>
-        <div class="col-md-4"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
+        <div class="col-md-12"><strong>من:</strong> أحمد محمد</div>
+        <div class="col-md-12"><strong>إلى:</strong> سامي علي</div>
+        <div class="col-md-12"><strong>التصنيف الرئيسي:</strong> مشتريات</div>
+        <div class="col-md-12"><strong>التصنيف الفرعي:</strong> لحوم</div>
+        <div class="col-md-12"><strong>الموضوع:</strong> شراء لحوم من حفر الباطن</div>
       </div>
     </div>
 
@@ -130,7 +132,9 @@
       <div class="section-header">
         <button class="print-button btn btn-primary" onclick="printTag('sub-1')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
-        <button class="btn btn-primary print-button" onclick="initEdit(this,1)">تعديل</button>
+        <button class="print-button btn btn-primary" onclick="initEdit(this,1)">تعديل</button>
+		<button class="print-button btn btn-success" onclick="alert('إنهاء المهمة');">إنهاء</button>
+		
       </div>
       <div class="row printable">
 		<div class="col-md-12"><strong>رقم (123 / 1)</strong></div>
@@ -165,6 +169,7 @@
         <button class="print-button btn btn-primary" onclick="printTag('sub-2')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary print-button" onclick="initEdit(this,2)">تعديل</button>
+		<button class="print-button btn btn-success" onclick="alert('إنهاء المهمة');">إنهاء</button>
       </div>
       <div class="row printable">
 		<div class="col-md-12"><strong>إضافة رقم (123 / 2)</strong></div>
@@ -198,6 +203,7 @@
         <button class="print-button btn btn-primary" onclick="printTag('sub-3')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary print-button" onclick="initEdit(this,3)">تعديل</button>
+		<button class="print-button btn btn-success" onclick="alert('إنهاء المهمة');">إنهاء</button>
       </div>
       <div class="row printable">
 		<div class="col-md-12"><strong>إضافة رقم (123 / 3)</strong></div>
@@ -231,6 +237,7 @@
         <button class="print-button btn btn-primary" onclick="printTag('sub-4')">طباعة</button>
         <button class="print-button btn btn-primary" onclick="printAll()">طباعة الكل</button>
         <button class="btn btn-primary print-button" onclick="initEdit(this,4)">تعديل</button>
+		<button class="print-button btn btn-success" onclick="alert('إنهاء المهمة');">إنهاء</button>
       </div>
       <div class="row printable">
 
