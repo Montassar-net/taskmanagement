@@ -151,6 +151,14 @@
 			color:#999;
 		}
 		
+		
+		.ck.ck-editor {
+      width: 100% !important;
+    }
+	.ck-editor__editable {
+    min-height: 300px !important;
+	}
+		
 		@media print {
 		  body * {
 			visibility: hidden;
@@ -595,6 +603,8 @@
 <script>
 
 	document.addEventListener('DOMContentLoaded', function() {
+	
+	  document.getElementById('creation_date').valueAsDate = new Date();
     // Initialize ClassicEditor for specific elements with Arabic support
     ClassicEditor.create(document.querySelector('#setText'), {
 	toolbar: ['bold', 'italic', 'table' , 'undo', 'redo' , 'numberedList', 'bulletedList', 'Heading'], fontFamily: {
